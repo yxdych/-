@@ -1,0 +1,79 @@
+<?php
+
+/*  示例*/
+
+// $url='http://www.chzybj.com/phpcurl.php';
+// // 创建一个新cURL资源
+// $ch = curl_init($url);
+// // 设置URL和相应的选项
+// // curl_setopt($ch, CURLOPT_URL, $url);  //需要获取的URL地址，也可以在 curl_init() 函数中设置。  
+// // 抓取URL并把它传递给浏览器
+// curl_exec($ch);
+// // 关闭cURL资源，并且释放系统资源
+// curl_close($ch);
+
+
+/*POST multipart/form-data */ 
+// $url = 'http://www.chzybj.com/phpcurl.php';
+// $ch   = curl_init();
+// $data =array('name' => 'Foo', 'file' => '1');
+// curl_setopt($ch, CURLOPT_URL, $url); //需要获取的URL地址，也可以在 curl_init() 函数中设置。
+// curl_setopt($ch, CURLOPT_POST, 1); // 启用时会发送一个常规的POST请求，类型为：application/x-www-form-urlencoded，就像表单提交的一样。
+// curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+// curl_exec($ch);
+// curl_close($ch);
+
+/*POST application/x-www-form-urlencoded*/
+/*$data=array('nmae'=>'测试','status'=>'状态');
+$data=http_build_query($data);
+$url = 'http://www.chzybj.com/phpcurl.php';
+$ch=curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch,CURLOPT_POST, 1);
+curl_setopt($ch,CURLOPT_POSTFIELDS, $data);
+curl_exec($ch);
+curl_close($ch);
+*/
+/*POST JSON*/
+// $url = 'http://localhost/test/time.php';
+// $data = array("name" => "Hagrid", "age" => "36");
+// $data_string = json_encode($data);
+// $ch = curl_init($url);
+// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+// curl_setopt($ch, CURLOPT_POSTFIELDS,$data_string);
+// curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+//     'Content-Type: application/json',
+//     "Host: act.qzone.qq.com",
+//     'Content-Length: ' . strlen($data_string),
+// )
+// );
+// curl_setopt($ch, CURLINFO_HEADER_OUT, TRUE); 
+// curl_exec($ch);
+// //通过curl_getinfo()可以得到请求头的信息
+// curl_getinfo($ch);
+
+// curl_close($ch);
+/*get*/
+
+// $data = array("name" => "Hagrid", "age" => "36");
+// $data_string =http_build_query($data);
+// $url = 'http://localhost/test/time.php?'.$data_string;
+// $ch = curl_init($url);
+// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);//要求结果为字符串且输出到屏幕上 将 curl_exec() 获取的信息以文件流的形式返回，而不是直接输出。 
+// $result=curl_exec($ch);
+// curl_close($ch);
+// var_dump($result);
+
+
+/*请求过时*/
+// $data = array("name" => "Hagrid", "age" => "36");
+// $data_string =http_build_query($data);
+// $url = 'http://localhost/test/time.php?'.$data_string;
+// $ch = curl_init($url);
+// curl_setopt($ch, CURLOPT_TIMEOUT, 1);          //单位 秒，也可以使用
+// #curl_setopt($ch, CURLOPT_NOSIGNAL, 1);     //注意，毫秒超时一定要设置这个
+// #curl_setopt($ch, CURLOPT_TIMEOUT_MS, 200); //超时毫秒，cURL 7.16.2中被加入。从PHP 5.2.3起可使用
+// curl_exec($ch);
+// echo  curl_error ( $ch );;
+// curl_close($ch);
+/*curl_escape*/
